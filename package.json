@@ -1,8 +1,8 @@
 {
   "name": "ion-poc",
-  "version": "0.0.1",
+  "version": "0.0.2rc",
   "description": "POC for styled component lib",
-  "main": "index.js",
+  "main": "lib",
   "scripts": {
     "clean": "rimraf lib",
     "lint": "standard",
@@ -11,7 +11,8 @@
     "watch": "babel --watch src --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepublish": "npm run build"
   },
   "author": "mattstyles",
   "license": "MIT",
