@@ -1,7 +1,9 @@
 
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import {getTheme} from './theme/helpers'
 import {H2, Text} from './type'
 
 const Wrapper = styled.div`
@@ -11,12 +13,34 @@ const Wrapper = styled.div`
   overflow: hidden;
 `
 
-const Image = styled.img`
+const RawImage = styled.img`
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
+  transition: opacity ${getTheme('transition.main')}ms ease-out;
+  opacity: ${props => props.isVisible ? 1 : 0};
 `
+
+class Image extends Component {
+  state = {
+    isVisible: false
+  }
+
+  onLoad = event => this.setState(state => ({
+    isVisible: true
+  }))
+
+  render () {
+    return (
+      <RawImage
+        {...this.props}
+        isVisible={this.state.isVisible}
+        onLoad={this.onLoad}
+      />
+    )
+  }
+}
 
 const Above = styled.div`
   position: relative;
@@ -33,7 +57,9 @@ export const Banner = ({
       <H2>{title}</H2>
       <a href={link}><Text>{link}</Text></a>
     </Above>
-    <Image src={imageUrl} />
+    <Image
+      src={imageUrl}
+    />
   </Wrapper>
 )
 
