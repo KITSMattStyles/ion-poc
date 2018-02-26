@@ -6,6 +6,10 @@ import styled from 'styled-components'
 import {getTheme} from './theme/helpers'
 import {H2, Text} from './type'
 
+const Error = styled.span`
+  color: red;
+`
+
 const Wrapper = styled.div`
   width: 100%;
   height: 160px;
@@ -72,4 +76,64 @@ Banner.propTypes = {
   title: PropTypes.string,
   imageUrl: PropTypes.string,
   link: PropTypes.string
+}
+
+/*
+ * Automatically loads the banner on mount
+ */
+export class BannerLoader extends Component {
+  state = {
+    data: null
+  }
+
+  componentDidMount () {
+    const {url} = this.props
+
+    if (!url) {
+      console.warn('No load url supplied to loader')
+      return
+    }
+
+    window.fetch(url)
+      .then(res => res.json())
+      .then(this.onContentLoad)
+  }
+
+  onContentLoad = ({items}) => {
+    this.setState(state => ({
+      data: {
+        title: items['cms:banner_name'],
+        imageUrl: items['cms:image_url'],
+        link: items['cms:link']
+      }
+    }))
+  }
+
+  render () {
+    const {url} = this.props
+
+    if (!url) {
+      return (
+        <Wrapper>
+          <H2><Error>No url supplied to banner loader</Error></H2>
+        </Wrapper>
+      )
+    }
+
+    const {data} = this.state
+
+    if (!data) {
+      return (
+        <Wrapper>
+          <H2>Loading...</H2>
+        </Wrapper>
+      )
+    }
+
+    return <Banner {...data} />
+  }
+}
+
+BannerLoader.defaultProps = {
+  url: null
 }

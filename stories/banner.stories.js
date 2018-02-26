@@ -4,7 +4,7 @@ import {storiesOf} from '@storybook/react'
 // import oc from 'open-color'
 import styled from 'styled-components'
 
-import {Banner} from '../src'
+import {Banner, BannerLoader} from '../src'
 
 const Page = styled.div`
   position: relative;
@@ -19,6 +19,13 @@ storiesOf('banner', module)
         title='Hello World'
         imageUrl='http://fillmurray.com/600/300'
         link='http://npmjs.org'
+      />
+    </Page>
+  ))
+  .add('banner autoload', () => (
+    <Page>
+      <BannerLoader
+        url='https://www.kingfisher.test.onehippo.com/api/documents/5694d070-030e-45e2-9688-6af42e31ced6'
       />
     </Page>
   ))
