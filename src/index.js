@@ -7,6 +7,7 @@ export {theme}
 
 export * from './type'
 export * from './banner'
+export * from './layout'
 
 export const setGlobalStyling = () => {
   injectGlobal`
