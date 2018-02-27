@@ -2,7 +2,7 @@
 import {find} from 'lodash/fp'
 import styled from 'styled-components'
 
-import {Banner} from './banner2'
+import {Banner2} from './banner2'
 
 const findById = id => find(({document}) => document.id === id)
 const BANNER_TYPE = 'Banner'
@@ -16,9 +16,8 @@ const Warn = styled.div`
 `
 
 const Generic = ({data}) => {
-  console.log(data)
   if (data.type === BANNER_TYPE) {
-    return <Banner {...data} />
+    return <Banner2 {...data} />
   }
 
   return (

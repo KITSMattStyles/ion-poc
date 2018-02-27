@@ -29,7 +29,7 @@ const UnsafeHTML = ({
   />
 )
 
-export const Banner = ({
+export const Banner2 = ({
   document: {
     title,
     content: {value: copy}

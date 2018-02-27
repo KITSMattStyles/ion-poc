@@ -5,7 +5,7 @@ import {storiesOf} from '@storybook/react'
 import styled from 'styled-components'
 
 import {Layout} from '../src'
-import data from '../src/layout.json'
+import data from './layout.json'
 
 const Page = styled.div`
   position: relative;
