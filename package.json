@@ -1,6 +1,6 @@
 {
   "name": "ion-poc",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "POC for styled component lib",
   "main": "lib",
   "scripts": {
